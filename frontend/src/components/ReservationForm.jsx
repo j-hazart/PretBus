@@ -1,12 +1,21 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../pages/styles/TripReservation.css";
 import { today, convertToFr } from "../services/getTodayDate";
 import adressData from "../services/adressData";
+import ReservationContext from "../contexts/ReservationsContext";
 
 function ReservationForm() {
-  const [reservationDate, setReservationDate] = useState(today);
-  const [startAdress, setStartAdress] = useState("");
-  const [endAdress, setEndAdress] = useState("");
+  const {
+    allReservation,
+    setAllReservation,
+    reservationDate,
+    setReservationDate,
+    startAdress,
+    setStartAdress,
+    endAdress,
+    setEndAdress,
+  } = useContext(ReservationContext);
+
   const [isReserved, setIsReserved] = useState(false);
 
   const handleChange = (e, input) => {
@@ -17,10 +26,19 @@ function ReservationForm() {
     }
   };
 
+  const handleValidation = () => {
+    setAllReservation(...allReservation, {
+      startAdress,
+      endAdress,
+      reservationDate,
+    });
+    setIsReserved(true);
+  };
+
   return isReserved ? (
     <p>
-      Votre réservation pour le trajet du <strong>{startAdress}</strong> au{" "}
-      <strong>{endAdress}</strong> est bien enregistrer pour le{" "}
+      Votre réservation pour le trajet du <strong>{startAdress}</strong> au
+      <strong>{endAdress}</strong> est bien enregistrer pour le
       <strong>{convertToFr(reservationDate)}</strong>
     </p>
   ) : (
@@ -54,7 +72,7 @@ function ReservationForm() {
         onChange={(e) => setReservationDate(e.target.value)}
         min={today}
       />
-      <button type="button" onClick={() => setIsReserved(true)}>
+      <button type="button" onClick={handleValidation}>
         Réserver
       </button>
     </form>
