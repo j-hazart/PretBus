@@ -1,5 +1,4 @@
 import React, { useState, useEffect, useReducer, useContext } from "react";
-import "../loginHeader.css";
 
 import { Link } from "react-router-dom";
 
@@ -82,7 +81,7 @@ export default function Login() {
 
   return (
     <>
-      <Header />
+      <Header display="headerButtonNone" />
       <Card classNames={classes.login}>
         <form onSubmit={submitHandler}>
           <div
