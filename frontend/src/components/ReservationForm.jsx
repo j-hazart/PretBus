@@ -4,6 +4,7 @@ import { today, convertToFr } from "../services/getTodayDate";
 import adressData from "../services/adressData";
 
 function ReservationForm() {
+  const [allReservation, setAllReservation] = useState([]);
   const [reservationDate, setReservationDate] = useState(today);
   const [startAdress, setStartAdress] = useState("");
   const [endAdress, setEndAdress] = useState("");
@@ -17,10 +18,19 @@ function ReservationForm() {
     }
   };
 
+  const handleValidation = () => {
+    setAllReservation(...allReservation, {
+      startAdress,
+      endAdress,
+      reservationDate,
+    });
+    setIsReserved(true);
+  };
+
   return isReserved ? (
     <p>
-      Votre réservation pour le trajet du <strong>{startAdress}</strong> au{" "}
-      <strong>{endAdress}</strong> est bien enregistrer pour le{" "}
+      Votre réservation pour le trajet du <strong>{startAdress}</strong> au
+      <strong>{endAdress}</strong> est bien enregistrer pour le
       <strong>{convertToFr(reservationDate)}</strong>
     </p>
   ) : (
@@ -54,7 +64,7 @@ function ReservationForm() {
         onChange={(e) => setReservationDate(e.target.value)}
         min={today}
       />
-      <button type="button" onClick={() => setIsReserved(true)}>
+      <button type="button" onClick={handleValidation}>
         Réserver
       </button>
     </form>
