@@ -1,5 +1,7 @@
 import React, { useState, useEffect, useReducer, useContext } from "react";
+import "../loginHeader.css";
 
+import Header from "@components/Header";
 import { UserContext } from "../store/auth";
 
 import Card from "../components/UI/Card";
@@ -77,42 +79,49 @@ export default function Login() {
   };
 
   return (
-    <Card classNames={classes.login}>
-      <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            passwordState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            id="password"
-            value={passwordState.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
-        <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
-            Valider
-          </Button>
-        </div>
-      </form>
-    </Card>
+    <>
+      <Header />
+      <Card classNames={classes.login}>
+        <form onSubmit={submitHandler}>
+          <div
+            className={`${classes.control} ${
+              emailState.isValid === false ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="email">E-Mail</label>
+            <input
+              type="email"
+              id="email"
+              value={emailState.value}
+              onChange={emailChangeHandler}
+              onBlur={validateEmailHandler}
+            />
+          </div>
+          <div
+            className={`${classes.control} ${
+              passwordState.isValid === false ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              value={passwordState.value}
+              onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
+            />
+          </div>
+          <div className={classes.actions}>
+            <Button
+              type="submit"
+              className={classes.btn}
+              disabled={!formIsValid}
+            >
+              Valider
+            </Button>
+          </div>
+        </form>
+      </Card>
+    </>
   );
 }
