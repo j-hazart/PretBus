@@ -1,11 +1,15 @@
-body {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+.App,
+body,
+#root {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
 }
-form input,
-form button {
+.createAccount input,
+.createAccount button {
   display: block;
+  width: 60vw;
   padding: 10px;
   margin: 20px auto;
   border-radius: 10px;
@@ -30,4 +34,12 @@ form button {
 
 .header button img {
   width: 5vw;
+}
+
+.leaflet-container {
+  flex: 1;
+}
+
+.headerButtonNone button {
+  display: none;
 }
