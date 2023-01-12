@@ -20,3 +20,4 @@ CREATE TABLE car (
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 insert into user (model) values ("Mini-Bus");
+insert into user (model) values ("Bus");
