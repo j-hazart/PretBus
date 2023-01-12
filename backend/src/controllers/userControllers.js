@@ -109,7 +109,6 @@ const login = async (req, res) => {
         });
         res.send({ token, id: users[0].id });
       } else {
-        console.log("invalid password");
         res.sendStatus(401);
       }
     }
