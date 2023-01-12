@@ -1,3 +1,11 @@
+.App,
+body,
+#root {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
 .createAccount input,
 .createAccount button {
   display: block;
@@ -26,6 +34,10 @@
 
 .header button img {
   width: 5vw;
+}
+
+.leaflet-container {
+  flex: 1;
 }
 
 .headerButtonNone button {
