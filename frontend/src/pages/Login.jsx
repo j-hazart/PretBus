@@ -1,36 +1,19 @@
 import React, { useState, useEffect, useReducer, useContext } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-import { Link } from "react-router-dom";
-
-import Header from "../components/Header";
-import { UserContext } from "../store/auth";
+import Modal from "../components/UI/Modal";
 
 import Card from "../components/UI/Card";
 import Button from "../components/UI/Button";
 import classes from "./Login.module.css";
-
-const emailReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.includes("@") };
-  }
-  if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.includes("@") };
-  }
-  return { value: "", isValid: false };
-};
-
-const passwordReducer = (state, action) => {
-  if (action.type === "USER_INPUT") {
-    return { value: action.val, isValid: action.val.trim().length > 6 };
-  }
-  if (action.type === "INPUT_BLUR") {
-    return { value: state.value, isValid: state.value.trim().length > 6 };
-  }
-  return { value: "", isValid: false };
-};
+import { emailReducer, passwordReducer } from "../helpers/loginHelpers";
+import { UserContext } from "../store/auth";
 
 export default function Login() {
-  const { setIsLogged, setIsAdmin } = useContext(UserContext);
+  const navigate = useNavigate();
+  const { setToken } = useContext(UserContext);
+  const { setId } = useContext(UserContext);
+  const [error, setError] = useState(false);
   const [formIsValid, setFormIsValid] = useState(false);
 
   const [emailState, dispatchEmail] = useReducer(emailReducer, {
@@ -42,18 +25,15 @@ export default function Login() {
     isValid: null,
   });
 
-  const { isValid: emailIsValid } = emailState;
-  const { isValid: passwordIsValid } = passwordState;
-
   useEffect(() => {
     const identifier = setTimeout(() => {
-      setFormIsValid(emailIsValid && passwordIsValid);
+      setFormIsValid(emailState.isValid && passwordState.isValid);
     }, 500);
 
     return () => {
       clearTimeout(identifier);
     };
-  }, [emailIsValid, passwordIsValid]);
+  }, [emailState.isValid, passwordState.isValid]);
 
   const emailChangeHandler = (event) => {
     dispatchEmail({ type: "USER_INPUT", val: event.target.value });
@@ -73,61 +53,96 @@ export default function Login() {
 
   const submitHandler = (event) => {
     event.preventDefault();
-    setIsLogged(true);
-    if (emailState.value === "admin@pretbus") {
-      setIsAdmin(true);
-    }
+    const url = import.meta.env.VITE_BACKEND_URL;
+    fetch(`${url}/api/login`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        email: emailState.value,
+        password: passwordState.value,
+      }),
+    })
+      .then((res) => res.json())
+      .then((data) => {
+        if (data.token) {
+          setToken(data.token);
+          setId(data.id);
+          navigate("/travelerlist");
+        } else {
+          setTimeout(() => {
+            setError(true);
+          }, 500);
+        }
+      });
+  };
+
+  const hideErrorMessage = () => {
+    setError(false);
   };
 
   return (
-    <>
-      <Header display="headerButtonNone" />
-      <Card classNames={classes.login}>
-        <form onSubmit={submitHandler}>
-          <div
-            className={`${classes.control} ${
-              emailState.isValid === false ? classes.invalid : ""
-            }`}
+    <Card classNames={classes.login}>
+      {error && (
+        <Modal onClose={hideErrorMessage}>
+          <h1>Erreur</h1>
+          <p>
+            Une erreur est survenue. Votre email ou mot de passe n'est pas
+            correct. Veuillez réessayer plus tard
+          </p>
+          <button
+            className="buttonlogin"
+            type="button"
+            onClick={hideErrorMessage}
           >
-            <label htmlFor="email">E-Mail</label>
-            <input
-              type="email"
-              id="email"
-              value={emailState.value}
-              onChange={emailChangeHandler}
-              onBlur={validateEmailHandler}
-            />
-          </div>
-          <div
-            className={`${classes.control} ${
-              passwordState.isValid === false ? classes.invalid : ""
-            }`}
+            Annuler
+          </button>
+        </Modal>
+      )}
+      <form onSubmit={submitHandler}>
+        <div
+          className={`${classes.control} ${
+            emailState.isValid === false ? classes.invalid : ""
+          }`}
+        >
+          <label htmlFor="email">E-Mail</label>
+          <input
+            type="email"
+            id="email"
+            value={emailState.value}
+            onChange={emailChangeHandler}
+            onBlur={validateEmailHandler}
+          />
+        </div>
+        <div
+          className={`${classes.control} ${
+            passwordState.isValid === false ? classes.invalid : ""
+          }`}
+        >
+          <label htmlFor="password">Mot de passe</label>
+          <input
+            type="password"
+            id="password"
+            value={passwordState.value}
+            onChange={passwordChangeHandler}
+            onBlur={validatePasswordHandler}
+          />
+        </div>
+        <div className={classes.actions}>
+          <Button
+            type="submit"
+            className={classes["button-login"]}
+            disabled={!formIsValid}
           >
-            <label htmlFor="password">Mot de passe</label>
-            <input
-              type="password"
-              id="password"
-              value={passwordState.value}
-              onChange={passwordChangeHandler}
-              onBlur={validatePasswordHandler}
-            />
-          </div>
-          <div className={classes.actions}>
-            <Link to="/travelerlist">
-              <Button
-                type="submit"
-                className={classes["button-login"]}
-                disabled={!formIsValid}
-              >
-                Valider
-              </Button>
-            </Link>
-            <Link to="/createaccount">
-              <Button>Creer votre compte</Button>
-            </Link>
-          </div>
-        </form>
-      </Card>
-    </>
+            Valider
+          </Button>
+
+          <Link to="/createaccount">
+            <Button>Creer votre compte</Button>
+          </Link>
+        </div>
+      </form>
+    </Card>
   );
 }

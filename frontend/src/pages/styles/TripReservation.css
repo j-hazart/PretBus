@@ -1,0 +1,17 @@
+.reservation-form {
+  display: flex;
+  flex-direction: column;
+  padding: 1rem;
+}
+
+.reservation-form label,
+input {
+  padding: 1rem;
+  border-radius: 0.5rem;
+}
+
+.reservation-form button {
+  margin-top: 1rem;
+  padding: 1rem;
+  border-radius: 0.5rem;
+}

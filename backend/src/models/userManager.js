@@ -18,6 +18,13 @@ class UserManager extends AbstractManager {
       [user.name, user.email, user.hashedPassword, user.role, user.id]
     );
   }
+
+  verifyEmailAndPasswordAndNext(email) {
+    return this.connection.query(
+      `select hashedPassword from ${this.table} where email = ?`,
+      [email]
+    );
+  }
 }
 
 module.exports = UserManager;
