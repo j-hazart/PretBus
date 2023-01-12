@@ -2,7 +2,7 @@ import "./ListTraveler.css";
 
 export default function ListTraveler() {
   return (
-    <div>
+    <div className="pageofdriver">
       <ul className="list-of-traveler">
         <li className="traveler">
           <details>
