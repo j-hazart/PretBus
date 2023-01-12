@@ -6,4 +6,9 @@ const day = date.getDate();
 
 const today = `${year}-${`0${month}`.slice(-2)}-${`0${day}`.slice(-2)}`;
 
-export default today;
+function convertToFr(dateToConvert) {
+  const [y, m, d] = dateToConvert.split("-");
+  return `${d}-${m}-${y}`;
+}
+
+export { today, convertToFr };
