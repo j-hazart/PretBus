@@ -19,7 +19,9 @@
     "husky": "^7.0.0"
   },
   "dependencies": {
+    "argon2": "^0.30.3",
     "axios": "^1.2.2",
+    "jsonwebtoken": "^9.0.0",
     "react-leaflet": "^4.2.0",
     "react-router-dom": "^6.6.2"
   }
