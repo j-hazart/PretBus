@@ -6,6 +6,7 @@ import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { UserProvider } from "./store/auth";
+import TripReservation from "./pages/TripReservation";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -17,6 +18,7 @@ root.render(
           <Route path="/" element={<Login />} />
           <Route path="/createaccount" element={<CreateAccount />} />
           <Route path="/travelerlist" element={<ListTraveler />} />
+          <Route path="/reservation" element={<TripReservation />} />
         </Routes>
       </Router>
     </UserProvider>
