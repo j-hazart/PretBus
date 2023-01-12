@@ -1,12 +1,10 @@
-import Home from "./pages/Home";
-
+import CreateAccount from "./components/CreateAccount";
 import "./App.css";
 
 function App() {
   return (
     <div className="App">
-      <Home />
-      <p>coucou</p>
+      <CreateAccount />
     </div>
   );
 }
