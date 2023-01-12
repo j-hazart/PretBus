@@ -1,12 +1,7 @@
-import CreateAccount from "./components/CreateAccount";
 import "./App.css";
 
 function App() {
-  return (
-    <div className="App">
-      <CreateAccount />
-    </div>
-  );
+  return <div className="App">hello</div>;
 }
 
 export default App;

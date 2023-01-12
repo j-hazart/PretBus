@@ -52,7 +52,9 @@ const edit = (req, res) => {
 
 const add = (req, res) => {
   const user = req.body;
-
+  user.hashedPassword = user.password;
+  delete user.password;
+  user.role = "utilisateur";
   // TODO validations (length, format...)
 
   models.user

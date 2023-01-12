@@ -1,11 +1,13 @@
 import { useRef, useState } from "react";
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 function CreateAccount() {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const [password, setPassword] = useState("");
   const [passwordConfirm, setPasswordConfirm] = useState("");
+  const navigate = useNavigate();
 
   return (
     <form
@@ -14,10 +16,19 @@ function CreateAccount() {
 
         if (password === passwordConfirm) {
           axios
-            .get(`${import.meta.env.VITE_BACKEND_URL}/user`)
-            .then
-            // reponse
-            ();
+            .post(`${import.meta.env.VITE_BACKEND_URL}/user`, {
+              name: nameRef.current.value,
+              email: emailRef.current.value,
+              password,
+            })
+            .then((rep) => {
+              if (rep.status === 201) {
+                navigate("/");
+              } else {
+                setPassword("");
+                setPasswordConfirm("");
+              }
+            });
         }
       }}
     >
