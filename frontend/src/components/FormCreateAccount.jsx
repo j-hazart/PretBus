@@ -11,6 +11,7 @@ function FormCreateAccount() {
 
   return (
     <form
+      className="createAccount"
       onSubmit={(e) => {
         e.preventDefault();
 
