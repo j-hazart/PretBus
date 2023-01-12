@@ -1,9 +1,10 @@
+import PropTypes from "prop-types";
 import logo from "../assets/logo.png";
 import user from "../assets/connexion.png";
 
-function Header() {
+function Header({ display }) {
   return (
-    <section className="header">
+    <section className={`${display} header`}>
       <button
         type="button"
         onClick={() => {
@@ -20,4 +21,7 @@ function Header() {
   );
 }
 
+Header.propTypes = {
+  display: PropTypes.string.isRequired,
+};
 export default Header;
