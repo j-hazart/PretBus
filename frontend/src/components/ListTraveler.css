@@ -5,35 +5,26 @@
   justify-content: center;
 }
 .traveler {
-  list-style-type: none;
   display: flex;
-  justify-content: space-between;
   min-width: 15rem;
-  max-height: 2rem;
+  min-height: 2rem;
   border: solid;
   border-radius: 1rem;
+  padding: 0.7rem 0rem 0rem 0rem;
 }
 .name-traveler {
   font-family: Verdana, Geneva, Tahoma, sans-serif;
   font-size: 0.9rem;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  padding: 0rem 0rem 0rem 0.3rem;
-}
-.button-start-end-traveler {
-  background-color: white;
-  border-width: 0rem;
-  border-radius: 1rem;
-  width: 2.5rem;
-  border-left: solid;
-  border-top-left-radius: 0rem;
-  border-bottom-left-radius: 0rem;
-}
-.arrow-start-end-traveler {
-  width: 1rem;
-  height: 1rem;
+  padding: 0rem 0rem 0rem 1rem;
 }
 .list-start-end {
-  display: none;
+  padding: 0rem 0rem 0rem 1rem;
+}
+.list-start {
+  list-style-type: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.list-end {
+  list-style-type: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
 }
