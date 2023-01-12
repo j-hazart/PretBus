@@ -1,15 +1,8 @@
-import Home from "./pages/Home";
-import MapDriver from "./pages/map-driver";
 import "./App.css";
+import Home from "./pages/Home";
 
 function App() {
-  return (
-    <div className="App">
-      <Home />
-      <MapDriver />
-      <p>coucou</p>
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;

@@ -1,0 +1,30 @@
+.list-of-traveler {
+  display: flex;
+  margin: 5rem 0rem 0rem 0rem;
+  padding: 0;
+  justify-content: center;
+}
+.traveler {
+  display: flex;
+  min-width: 15rem;
+  min-height: 2rem;
+  border: solid;
+  border-radius: 1rem;
+  padding: 0.7rem 0rem 0rem 0rem;
+}
+.name-traveler {
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+  font-size: 0.9rem;
+  padding: 0rem 0rem 0rem 1rem;
+}
+.list-start-end {
+  padding: 0rem 0rem 0rem 1rem;
+}
+.list-start {
+  list-style-type: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+.list-end {
+  list-style-type: none;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
