@@ -1,9 +1,12 @@
 import "./ListTraveler.css";
+import PropTypes from "prop-types";
+import Header from "./Header";
 
-export default function ListTraveler() {
+export default function ListTraveler({ display }) {
   return (
     <div className="pageofdriver">
-      <ul className="list-of-traveler">
+      <Header display={display} />
+      <ul className="list-of-vehicule">
         <li className="traveler">
           <details>
             <summary className="name-traveler"> Mon véhicule </summary>
@@ -27,3 +30,6 @@ export default function ListTraveler() {
     </div>
   );
 }
+ListTraveler.propTypes = {
+  display: PropTypes.string.isRequired,
+};

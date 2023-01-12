@@ -3,7 +3,13 @@
 }
 .list-of-traveler {
   display: flex;
-  margin: 1rem 0rem 0rem 0rem;
+  padding: 0;
+  justify-content: center;
+  margin: 2rem 0rem 0rem 0rem;
+}
+.list-of-vehicule {
+  display: flex;
+  margin: 3rem 0rem 0rem 0rem;
   padding: 0;
   justify-content: center;
 }
