@@ -1,9 +1,11 @@
 import "./ListTraveler.css";
+import Header from "./Header";
 
 export default function ListTraveler() {
   return (
     <div>
-      <ul className="list-of-traveler">
+      <Header />
+      <ul className="list-of-vehicule">
         <li className="traveler">
           <details>
             <summary className="name-traveler"> Mon véhicule </summary>
