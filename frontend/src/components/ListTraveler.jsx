@@ -3,7 +3,7 @@ import Header from "./Header";
 
 export default function ListTraveler() {
   return (
-    <div>
+    <div className="pageofdriver">
       <Header />
       <ul className="list-of-vehicule">
         <li className="traveler">
