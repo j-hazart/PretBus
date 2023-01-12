@@ -18,7 +18,7 @@ export default function ListTraveler() {
       <ul className="list-of-traveler">
         <li className="traveler">
           <details>
-            <summary className="name-traveler">Prénom Nom</summary>
+            <summary className="name-traveler">Prénom</summary>
             <ul className="list-start-end">
               <li className="list-start">Départ :</li>
               <li className="list-end">Arrivé : </li>
