@@ -23,7 +23,9 @@
   color: #464646;
   margin-bottom: 0.5rem;
 }
-
+.actions a {
+  text-decoration: none;
+}
 .control input {
   flex: 3;
   font: inherit;
@@ -45,15 +47,6 @@
 
 .actions {
   text-align: center;
-}
-.buttonlogin {
-  font: inherit;
-  cursor: pointer;
-  background: #a0d24b;
-  color: white;
-  border: 1px solid #a0d24b;
-  border-radius: 6px;
-  padding: 0.5rem 2rem;
 }
 
 @media (min-width: 768px) {

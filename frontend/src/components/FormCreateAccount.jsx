@@ -15,7 +15,7 @@ function FormCreateAccount() {
       onSubmit={(e) => {
         e.preventDefault();
 
-        if (password === passwordConfirm) {
+        if (password === passwordConfirm && password.length > 5) {
           axios
             .post(`${import.meta.env.VITE_BACKEND_URL}/user`, {
               name: nameRef.current.value,
