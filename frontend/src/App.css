@@ -27,3 +27,7 @@
 .header button img {
   width: 5vw;
 }
+
+.headerButtonNone button {
+  display: none;
+}
