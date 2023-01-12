@@ -1,12 +1,8 @@
 import "./App.css";
-import TripReservation from "@pages/TripReservation";
+import Home from "./pages/Home";
 
 function App() {
-  return (
-    <div className="App">
-      <TripReservation />
-    </div>
-  );
+  return <Home />;
 }
 
 export default App;
