@@ -10,9 +10,17 @@ export default function ListTraveler() {
           <details>
             <summary className="name-traveler"> Mon véhicule </summary>
             <ul className="list-start-end">
-              <li className="list-start"> Voiture </li>
-              <li className="list-start"> Mini-Bus </li>
-              <li className="list-start"> Bus </li>
+              <li className="list-start">
+                <input type="checkbox" id="scales" name="scales" />
+                Voiture
+              </li>
+              <li className="list-start">
+                <input type="checkbox" id="scales" name="scales" />
+                Mini-Bus
+              </li>
+              <li className="list-start">
+                <input type="checkbox" id="scales" name="scales" /> Bus{" "}
+              </li>
             </ul>
           </details>
         </li>
@@ -20,7 +28,7 @@ export default function ListTraveler() {
       <ul className="list-of-traveler">
         <li className="traveler">
           <details>
-            <summary className="name-traveler">Prénom</summary>
+            <summary className="name-traveler">Pierre-Yves</summary>
             <ul className="list-start-end">
               <li className="list-start">
                 Départ : 6 rue de Saint-Brice 51100 Reims
