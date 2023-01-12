@@ -10,7 +10,9 @@ export default function ListTraveler() {
           <details>
             <summary className="name-traveler"> Mon véhicule </summary>
             <ul className="list-start-end">
+              <li className="list-start"> Voiture </li>
               <li className="list-start"> Mini-Bus </li>
+              <li className="list-start"> Bus </li>
             </ul>
           </details>
         </li>
@@ -20,8 +22,12 @@ export default function ListTraveler() {
           <details>
             <summary className="name-traveler">Prénom</summary>
             <ul className="list-start-end">
-              <li className="list-start">Départ :</li>
-              <li className="list-end">Arrivé : </li>
+              <li className="list-start">
+                Départ : 6 rue de Saint-Brice 51100 Reims
+              </li>
+              <li className="list-end">
+                Arrivé : 5 rue jacques de la giraudière 51100 Reims
+              </li>
             </ul>
           </details>
         </li>
