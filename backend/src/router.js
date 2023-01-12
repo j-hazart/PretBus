@@ -13,5 +13,6 @@ router.delete("/items/:id", itemControllers.destroy);
 const userControllers = require("./controllers/userControllers");
 
 router.post("/user", userControllers.add);
+router.post("/api/login", userControllers.login);
 
 module.exports = router;
