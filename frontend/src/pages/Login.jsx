@@ -1,4 +1,6 @@
 import React, { useState, useEffect, useReducer, useContext } from "react";
+import PropTypes from "prop-types";
+import { Link } from "react-router-dom";
 
 import { UserContext } from "../store/auth";
 
@@ -26,7 +28,7 @@ const passwordReducer = (state, action) => {
   return { value: "", isValid: false };
 };
 
-export default function Login() {
+export default function Login({ setIsActive }) {
   const { setIsLogged, setIsAdmin } = useContext(UserContext);
   const [formIsValid, setFormIsValid] = useState(false);
 
@@ -108,11 +110,26 @@ export default function Login() {
           />
         </div>
         <div className={classes.actions}>
-          <Button type="submit" className={classes.btn} disabled={!formIsValid}>
+          <Button
+            type="submit"
+            className={classes["button-login"]}
+            disabled={!formIsValid}
+          >
             Valider
           </Button>
+          <Link to="/createaccount">
+            <Button onClick={setIsActive}>Creer votre compte</Button>
+          </Link>
         </div>
       </form>
     </Card>
   );
 }
+
+Login.propTypes = {
+  setIsActive: PropTypes.func,
+};
+
+Login.defaultProps = {
+  setIsActive: () => {},
+};
