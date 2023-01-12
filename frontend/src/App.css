@@ -43,3 +43,14 @@ body,
 .headerButtonNone button {
   display: none;
 }
+
+.leaflet-routing-container table,
+.leaflet-routing-container h2 {
+  display: none;
+}
+
+.leaflet-routing-container {
+  border: none;
+  padding: 5px;
+  background-color: aliceblue;
+}
