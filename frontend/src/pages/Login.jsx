@@ -1,7 +1,9 @@
 import React, { useState, useEffect, useReducer, useContext } from "react";
+import "../loginHeader.css";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+import Header from "@components/Header";
 import { UserContext } from "../store/auth";
 
 import Card from "../components/UI/Card";
@@ -79,50 +81,53 @@ export default function Login({ setIsActive }) {
   };
 
   return (
-    <Card classNames={classes.login}>
-      <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            passwordState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            id="password"
-            value={passwordState.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
-        <div className={classes.actions}>
-          <Button
-            type="submit"
-            className={classes["button-login"]}
-            disabled={!formIsValid}
+    <>
+      <Header />
+      <Card classNames={classes.login}>
+        <form onSubmit={submitHandler}>
+          <div
+            className={`${classes.control} ${
+              emailState.isValid === false ? classes.invalid : ""
+            }`}
           >
-            Valider
-          </Button>
-          <Link to="/createaccount">
-            <Button onClick={setIsActive}>Creer votre compte</Button>
-          </Link>
-        </div>
-      </form>
-    </Card>
+            <label htmlFor="email">E-Mail</label>
+            <input
+              type="email"
+              id="email"
+              value={emailState.value}
+              onChange={emailChangeHandler}
+              onBlur={validateEmailHandler}
+            />
+          </div>
+          <div
+            className={`${classes.control} ${
+              passwordState.isValid === false ? classes.invalid : ""
+            }`}
+          >
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              value={passwordState.value}
+              onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
+            />
+          </div>
+          <div className={classes.actions}>
+            <Button
+              type="submit"
+              className={classes["button-login"]}
+              disabled={!formIsValid}
+            >
+              Valider
+            </Button>
+            <Link to="/createaccount">
+              <Button onClick={setIsActive}>Creer votre compte</Button>
+            </Link>
+          </div>
+        </form>
+      </Card>
+    </>
   );
 }
 
