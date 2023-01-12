@@ -16,8 +16,8 @@ CREATE TABLE trajet (
 
 CREATE TABLE car (
   id int(11) UNSIGNED PRIMARY KEY NOT NULL AUTO_INCREMENT,
-  model varchar(255) NOT NULL,
+  model varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
-insert into user (model) values ("Mini-Bus");
-insert into user (model) values ("Bus");
+insert into car (model) values ("Mini-Bus");
+insert into car (model) values ("Bus");
