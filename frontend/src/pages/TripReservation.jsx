@@ -1,11 +1,14 @@
 import Header from "../components/Header";
 import ReservationForm from "../components/ReservationForm";
+import { ReservationContextProvider } from "../contexts/ReservationsContext";
 
 function TripReservation() {
   return (
     <>
       <Header />
-      <ReservationForm />
+      <ReservationContextProvider>
+        <ReservationForm />
+      </ReservationContextProvider>
     </>
   );
 }

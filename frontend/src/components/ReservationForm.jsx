@@ -1,13 +1,21 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import "../pages/styles/TripReservation.css";
 import { today, convertToFr } from "../services/getTodayDate";
 import adressData from "../services/adressData";
+import ReservationContext from "../contexts/ReservationsContext";
 
 function ReservationForm() {
-  const [allReservation, setAllReservation] = useState([]);
-  const [reservationDate, setReservationDate] = useState(today);
-  const [startAdress, setStartAdress] = useState("");
-  const [endAdress, setEndAdress] = useState("");
+  const {
+    allReservation,
+    setAllReservation,
+    reservationDate,
+    setReservationDate,
+    startAdress,
+    setStartAdress,
+    endAdress,
+    setEndAdress,
+  } = useContext(ReservationContext);
+
   const [isReserved, setIsReserved] = useState(false);
 
   const handleChange = (e, input) => {
