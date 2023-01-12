@@ -2,7 +2,7 @@ import { useRef, useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
-function CreateAccount() {
+function FormCreateAccount() {
   const nameRef = useRef("");
   const emailRef = useRef("");
   const [password, setPassword] = useState("");
@@ -49,4 +49,4 @@ function CreateAccount() {
   );
 }
 
-export default CreateAccount;
+export default FormCreateAccount;

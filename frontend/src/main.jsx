@@ -1,11 +1,10 @@
-import CreateAccount from "@components/CreateAccount";
+import CreateAccount from "@pages/CreateAccount";
+import Login from "@pages/Login";
 import React from "react";
 import ReactDOM from "react-dom/client";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 
 import { UserProvider } from "./store/auth";
-
-import App from "./App";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -14,7 +13,7 @@ root.render(
     <UserProvider>
       <Router>
         <Routes>
-          <Route path="/" element={<App />} />
+          <Route path="/" element={<Login />} />
           <Route path="/createaccount" element={<CreateAccount />} />
         </Routes>
       </Router>
