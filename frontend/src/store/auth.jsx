@@ -4,12 +4,12 @@ import propTypes from "prop-types";
 export const UserContext = createContext(null);
 
 export function UserProvider({ children }) {
-  const [isLogged, setIsLogged] = useState(false);
-  const [isAdmin, setIsAdmin] = useState(false);
+  const [token, setToken] = useState(false);
+  const [id, setId] = useState(false);
 
   const value = useMemo(
-    () => ({ isLogged, setIsLogged, isAdmin, setIsAdmin }),
-    [isLogged, setIsLogged, isAdmin, setIsAdmin]
+    () => ({ token, setToken, id, setId }),
+    [token, setToken, id, setId]
   );
 
   return <UserContext.Provider value={value}>{children}</UserContext.Provider>;
