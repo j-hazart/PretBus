@@ -34,8 +34,12 @@ export default function ListTraveler() {
           <details>
             <summary className="name-traveler">Pierre-Yves</summary>
             <ul className="list-start-end">
-              <li className="list-start">Départ : Rue Chanzy, 51100 Reims</li>
-              <li className="list-end">Arrivé : 08200 Sedan</li>
+              <li className="list-start">
+                Départ : 10 Rue Chanzy, 51100 Reims
+              </li>
+              <li className="list-end">
+                Arrivé : 22Rue des Écoles, 08200 Sedan
+              </li>
             </ul>
           </details>
         </li>
@@ -43,7 +47,9 @@ export default function ListTraveler() {
           <details>
             <summary className="name-traveler">Adnan</summary>
             <ul className="list-start-end">
-              <li className="list-start">Départ : 02340 Montcornet</li>
+              <li className="list-start">
+                Départ : 6 Rte de Reims, 02340 Montcornet
+              </li>
               <li className="list-end">
                 Arrivé : 22 Rue du Château, 08240 Buzancy
               </li>
@@ -54,7 +60,9 @@ export default function ListTraveler() {
           <details>
             <summary className="name-traveler">Valentin</summary>
             <ul className="list-start-end">
-              <li className="list-start">Départ : 55600 Montmédy</li>
+              <li className="list-start">
+                Départ : 1 Chem. du Stade, 55600 Montmédy
+              </li>
               <li className="list-end">
                 Arrivé : 19 Rue Emile Giros, 52100 Saint-Dizier
               </li>
