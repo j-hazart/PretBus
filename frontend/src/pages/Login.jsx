@@ -70,7 +70,7 @@ export default function Login() {
         if (data.token) {
           setToken(data.token);
           setId(data.id);
-          navigate("/travelerlist");
+          navigate("/reservation");
         } else {
           setTimeout(() => {
             setError(true);
