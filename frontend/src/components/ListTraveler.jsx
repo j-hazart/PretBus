@@ -1,10 +1,14 @@
 import "./ListTraveler.css";
+import { Link } from "react-router-dom";
 import Header from "./Header";
 
 export default function ListTraveler() {
   return (
     <div className="pageofdriver">
       <Header />
+      <Link to="/map">
+        <button type="button">Map</button>{" "}
+      </Link>
       <ul className="list-of-vehicule">
         <li className="traveler">
           <details>
