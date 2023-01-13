@@ -8,6 +8,7 @@ import Button from "../components/UI/Button";
 import classes from "./Login.module.css";
 import { emailReducer, passwordReducer } from "../helpers/loginHelpers";
 import { UserContext } from "../store/auth";
+import Header from "../components/Header";
 
 export default function Login() {
   const navigate = useNavigate();
@@ -83,66 +84,69 @@ export default function Login() {
   };
 
   return (
-    <Card classNames={classes.login}>
-      {error && (
-        <Modal onClose={hideErrorMessage}>
-          <h1>Erreur</h1>
-          <p>
-            Une erreur est survenue. Votre email ou mot de passe n'est pas
-            correct. Veuillez réessayer plus tard
-          </p>
-          <button
-            className="buttonlogin"
-            type="button"
-            onClick={hideErrorMessage}
+    <>
+      <Header display="headerButtonNone" />
+      <Card classNames={classes.login}>
+        {error && (
+          <Modal onClose={hideErrorMessage}>
+            <h1>Erreur</h1>
+            <p>
+              Une erreur est survenue. Votre email ou mot de passe n'est pas
+              correct. Veuillez réessayer plus tard
+            </p>
+            <button
+              className="buttonlogin"
+              type="button"
+              onClick={hideErrorMessage}
+            >
+              Annuler
+            </button>
+          </Modal>
+        )}
+        <form onSubmit={submitHandler}>
+          <div
+            className={`${classes.control} ${
+              emailState.isValid === false ? classes.invalid : ""
+            }`}
           >
-            Annuler
-          </button>
-        </Modal>
-      )}
-      <form onSubmit={submitHandler}>
-        <div
-          className={`${classes.control} ${
-            emailState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="email">E-Mail</label>
-          <input
-            type="email"
-            id="email"
-            value={emailState.value}
-            onChange={emailChangeHandler}
-            onBlur={validateEmailHandler}
-          />
-        </div>
-        <div
-          className={`${classes.control} ${
-            passwordState.isValid === false ? classes.invalid : ""
-          }`}
-        >
-          <label htmlFor="password">Mot de passe</label>
-          <input
-            type="password"
-            id="password"
-            value={passwordState.value}
-            onChange={passwordChangeHandler}
-            onBlur={validatePasswordHandler}
-          />
-        </div>
-        <div className={classes.actions}>
-          <Button
-            type="submit"
-            className={classes["button-login"]}
-            disabled={!formIsValid}
+            <label htmlFor="email">E-Mail</label>
+            <input
+              type="email"
+              id="email"
+              value={emailState.value}
+              onChange={emailChangeHandler}
+              onBlur={validateEmailHandler}
+            />
+          </div>
+          <div
+            className={`${classes.control} ${
+              passwordState.isValid === false ? classes.invalid : ""
+            }`}
           >
-            Valider
-          </Button>
+            <label htmlFor="password">Mot de passe</label>
+            <input
+              type="password"
+              id="password"
+              value={passwordState.value}
+              onChange={passwordChangeHandler}
+              onBlur={validatePasswordHandler}
+            />
+          </div>
+          <div className={classes.actions}>
+            <Button
+              type="submit"
+              className={classes["button-login"]}
+              disabled={!formIsValid}
+            >
+              Valider
+            </Button>
 
-          <Link to="/createaccount">
-            <Button>Creer votre compte</Button>
-          </Link>
-        </div>
-      </form>
-    </Card>
+            <Link to="/createaccount">
+              <Button>Creer votre compte</Button>
+            </Link>
+          </div>
+        </form>
+      </Card>
+    </>
   );
 }
